@@ -1,0 +1,107 @@
+`QBrush`で色を指定するには、`QColor`オブジェクトを使用します。`QColor`オブジェクトは、RGB値、HSV値、または名前付きの色を使用して色を定義できます。
+
+**1. RGB値で色を指定する:**
+
+```python
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtCore import Qt
+
+# 赤色のブラシを作成
+brush = QBrush(QColor(255, 0, 0))
+
+# 半透明の緑色のブラシを作成
+brush = QBrush(QColor(0, 255, 0, 128))
+```
+
+**2. HSV値で色を指定する:**
+
+```python
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtCore import Qt
+
+# 黄色のブラシを作成
+brush = QBrush(QColor.fromHsv(60, 255, 255))
+```
+
+**3. 名前付きの色で色を指定する:**
+
+```python
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtCore import Qt
+
+# 青色のブラシを作成
+brush = QBrush(QColor("blue"))
+
+# 水色のブラシを作成
+brush = QBrush(QColor("lightblue"))
+```
+
+**4. Qtの定義済み色を使用する:**
+
+```python
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtCore import Qt
+
+# 黒色のブラシを作成
+brush = QBrush(Qt.black)
+
+# 白色のブラシを作成
+brush = QBrush(Qt.white)
+```
+
+**5. グラデーションブラシを作成する:**
+
+```python
+from PyQt5.QtGui import QBrush, QColor, QLinearGradient
+from PyQt5.QtCore import Qt, QPointF
+
+# 線形グラデーションブラシを作成
+gradient = QLinearGradient(QPointF(0, 0), QPointF(100, 100))
+gradient.setColorAt(0, QColor("red"))
+gradient.setColorAt(1, QColor("blue"))
+brush = QBrush(gradient)
+```
+
+**6. テクスチャブラシを作成する:**
+
+```python
+from PyQt5.QtGui import QBrush, QPixmap
+from PyQt5.QtCore import Qt
+
+# テクスチャブラシを作成
+pixmap = QPixmap("texture.png")
+brush = QBrush(pixmap)
+```
+
+**7. ブラシのスタイルを指定する:**
+
+```python
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtCore import Qt
+
+# 斜線ブラシを作成
+brush = QBrush(QColor("gray"), Qt.DiagCrossPattern)
+```
+
+**8. ブラシをQPainterに設定する:**
+
+```python
+from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtGui import QPainter, QBrush, QColor
+from PyQt5.QtCore import Qt
+
+class Example(QWidget):
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        brush = QBrush(QColor("red"))
+        painter.setBrush(brush)
+        painter.drawRect(50, 50, 100, 100)
+
+if __name__ == '__main__':
+    app = QApplication([])
+    window = Example()
+    window.show()
+    app.exec_()
+```
+
+これらの方法を参考に、`QBrush`でさまざまな色やスタイルを指定して描画してみてください。
